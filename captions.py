@@ -108,7 +108,7 @@ hidden_layer = image_model.layers[-1].output
 
 image_features_extract_model = tf.keras.Model(new_input, hidden_layer)
 
-train_captions = pickle.load(open('captions.pkl', 'rb'))
+train_captions = pickle.load(open('captions-1.pkl', 'rb'))
 top_k = 5000
 tokenizer = tf.keras.preprocessing.text.Tokenizer(num_words=top_k,
                                                   oov_token="<unk>",
@@ -139,7 +139,7 @@ optimizer = tf.keras.optimizers.Adam()
 loss_object = tf.keras.losses.SparseCategoricalCrossentropy(
     from_logits=True, reduction='none')
 
-checkpoint_path = "checkpoints/train/ckpt-4"
+checkpoint_path = "checkpoints/train/ckpt-6"
 ckpt = tf.train.Checkpoint(encoder=encoder,decoder=decoder,optimizer = optimizer)
 ckpt.restore(checkpoint_path)
 
